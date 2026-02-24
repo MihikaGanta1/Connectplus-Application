@@ -1,0 +1,981 @@
+/* =============================================================================
+   STYLE.CSS — Main Stylesheet
+   =============================================================================
+   TABLE OF CONTENTS:
+   1.  CSS Variables
+   2.  Global Styles
+   3.  Company Header
+   4.  Navbar / Navigation
+   5.  Dashboard Cards (KPI)
+   6.  Status Cards
+   7.  Cards (General)
+   8.  Tables
+   9.  Badges
+   10. Forms & Validation
+   11. Buttons & Action Buttons
+   12. Filter Section
+   13. Agent Cards
+   14. Modal
+   15. Loading Spinner
+   16. Toast Notifications
+   17. Progress Bars
+   18. Chart Containers
+   19. Animations
+   20. Responsive Design
+   ============================================================================= */
+
+
+/* =============================================================================
+   1. CSS VARIABLES
+   ============================================================================= */
+:root {
+    --primary-color:   #3B82F6;
+    --secondary-color: #6B7280;
+    --success-color:   #10B981;
+    --danger-color:    #EF4444;
+    --warning-color:   #F59E0B;
+    --light-bg:        #F3F4F6;
+    --dark-text:       #111827;
+    --border-radius:   8px;
+    --box-shadow:      0 1px 3px rgba(0, 0, 0, 0.08);
+    --border-color:    #E5E7EB;
+    --card-bg:         #ffffff;
+    --muted-text:      #6B7280;
+    --surface-bg:      #F9FAFB;
+}
+
+
+/* =============================================================================
+   2. GLOBAL STYLES
+   ============================================================================= */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+    min-height: 100vh;
+}
+
+/* Reduce spacing between rows globally */
+.row {
+    margin-bottom: 0.5rem !important;
+}
+
+.mb-4 {
+    margin-bottom: 0.8rem !important;
+}
+
+
+/* =============================================================================
+   3. COMPANY HEADER
+   ============================================================================= */
+.company-header {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    background: #1E3A5F !important;
+}
+
+.company-header h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-shadow: none;
+}
+
+
+/* =============================================================================
+   4. NAVBAR / NAVIGATION
+   ============================================================================= */
+.navbar {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+    background-color: #ffffff !important;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--dark-text);
+}
+
+/* Nav link row layout */
+.navbar-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.5rem 1.2rem !important;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    color: var(--muted-text);
+}
+
+.navbar-nav .nav-link i {
+    margin-right: 0.4rem;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: var(--surface-bg);
+    color: var(--dark-text);
+}
+
+.navbar-nav .nav-link.active {
+    background-color: #EFF6FF;
+    color: #2563EB !important;
+    font-weight: 600;
+    box-shadow: none;
+}
+
+/* Brand logo mark */
+.nav-logo-mark {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: #1E3A5F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Brand text */
+.nav-brand-text {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #111827;
+    letter-spacing: -0.2px;
+}
+
+.nav-brand-accent {
+    color: #3B82F6;
+}
+
+/* Nav divider line below navbar */
+.nav-divider {
+    height: 1px;
+    background-color: #E5E7EB;
+}
+
+/* Loading text under spinner */
+.loading-text {
+    font-size: 0.875rem;
+}
+
+/* Quick Create / "Create Ticket" button in nav */
+.navbar-nav .nav-link.create-ticket {
+    background-color: #2563EB;
+    color: white !important;
+    margin-left: 0.75rem;
+    border-radius: 6px;
+}
+
+.navbar-nav .nav-link.create-ticket:hover {
+    background-color: #1D4ED8;
+    transform: none;
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+}
+
+
+/* =============================================================================
+   5. DASHBOARD CARDS (KPI)
+   ============================================================================= */
+.dashboard-card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 1.2rem;
+    box-shadow: var(--box-shadow);
+    border: 1px solid var(--border-color);
+    text-align: center;
+    transition: box-shadow 0.2s ease;
+    height: 100%;
+}
+
+.dashboard-card:hover {
+    transform: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.dashboard-card .icon {
+    font-size: 1.8rem;
+    color: var(--muted-text);
+    margin-bottom: 0.3rem;
+}
+
+.dashboard-card .value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+    color: var(--dark-text);
+}
+
+.dashboard-card .label {
+    font-size: 0.75rem;
+    color: var(--muted-text);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+/* Icon circle used inside KPI cards */
+.icon-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    background-color: var(--surface-bg);
+    color: var(--muted-text);
+}
+
+/* Text helpers used inside KPI cards */
+.small-label {
+    font-size: 0.75rem;
+    color: var(--muted-text);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.large-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--dark-text);
+}
+
+
+/* =============================================================================
+   6. STATUS CARDS
+   ============================================================================= */
+/* Force all four status card columns to stay the same height */
+.status-card-row {
+    display: flex;
+    align-items: stretch;
+}
+
+.status-card-row > [class*="col"] {
+    display: flex;
+    flex-direction: column;
+}
+
+.status-card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 1.2rem;
+    box-shadow: var(--box-shadow);
+    border: 1px solid var(--border-color);
+    height: 100%;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: box-shadow 0.2s ease;
+}
+
+.status-card:hover {
+    transform: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Left-border colour per status */
+.status-card.open     { border-left: 3px solid #3B82F6; }
+.status-card.progress { border-left: 3px solid #F59E0B; }
+.status-card.resolved { border-left: 3px solid #10B981; }
+.status-card.closed   { border-left: 3px solid #9CA3AF; }
+
+/* Text inside status cards */
+.status-label {
+    font-size: 0.72rem;
+    color: var(--muted-text);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+}
+
+.status-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.status-icon {
+    font-size: 1.6rem;
+    opacity: 0.5;
+    text-align: right;
+}
+
+/* Value and icon colours per status */
+.status-card.open     .status-value,
+.status-card.open     .status-icon  { color: #3B82F6; }
+
+.status-card.progress .status-value,
+.status-card.progress .status-icon  { color: #F59E0B; }
+
+.status-card.resolved .status-value,
+.status-card.resolved .status-icon  { color: #10B981; }
+
+.status-card.closed   .status-value,
+.status-card.closed   .status-icon  { color: #9CA3AF; }
+
+/* Icon alignment fix */
+.status-card .d-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+
+.status-card .status-icon {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* Soft background variants — replaced gradients with flat tinted borders */
+.bg-soft-primary   { background: #ffffff; border-left: 3px solid #3B82F6; }
+.bg-soft-info      { background: #ffffff; border-left: 3px solid #F59E0B; }
+.bg-soft-success   { background: #ffffff; border-left: 3px solid #10B981; }
+.bg-soft-secondary { background: #ffffff; border-left: 3px solid #9CA3AF; }
+
+/* Standalone status colour helpers */
+.status-open     { color: #3B82F6; }
+.status-progress { color: #F59E0B; }
+.status-resolved { color: #10B981; }
+.status-closed   { color: #6B7280; }
+
+
+/* =============================================================================
+   7. CARDS (GENERAL)
+   ============================================================================= */
+.card {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 1rem;
+    background-color: var(--card-bg);
+    transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.card-header {
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    font-weight: 600;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    color: var(--dark-text);
+}
+
+.card-header:first-child {
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.card-body {
+    padding: 0.75rem;
+    min-height: 220px;
+}
+
+
+/* =============================================================================
+   8. TABLES
+   ============================================================================= */
+.table-container {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 0.75rem;
+    box-shadow: var(--box-shadow);
+    border: 1px solid var(--border-color);
+    overflow-x: auto;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+.table thead th {
+    background-color: var(--surface-bg);
+    border-bottom: 1px solid var(--border-color);
+    color: var(--muted-text);
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    padding: 0.85rem 1rem;
+}
+
+.table th,
+.table td {
+    padding: 0.6rem 1rem !important;
+    font-size: 0.875rem;
+    vertical-align: middle;
+    color: var(--dark-text);
+    border-color: var(--border-color);
+}
+
+.table-hover tbody tr:hover {
+    background-color: #F9FAFB;
+    cursor: pointer;
+}
+
+/* Sortable column headers */
+.sort-header {
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.sort-header:hover {
+    background-color: #F3F4F6;
+}
+
+.sort-header i {
+    opacity: 0.4;
+    font-size: 0.75rem;
+}
+
+
+/* =============================================================================
+   9. BADGES
+   ============================================================================= */
+.badge {
+    padding: 0.3em 0.7em;
+    font-size: 0.72rem;
+    font-weight: 500;
+    border-radius: 4px;
+    letter-spacing: 0.3px;
+}
+
+/* Status badges — muted, semantic */
+.badge.bg-open     { background-color: #DBEAFE; color: #1D4ED8; }
+.badge.bg-progress { background-color: #FEF3C7; color: #92400E; }
+.badge.bg-resolved { background-color: #D1FAE5; color: #065F46; }
+.badge.bg-closed   { background-color: #F3F4F6; color: #374151; }
+.badge.bg-onhold   { background-color: #F3F4F6; color: #6B7280; }
+
+/* Priority badges */
+.badge.bg-critical { background-color: #FEE2E2; color: #991B1B; }
+.badge.bg-high     { background-color: #FFEDD5; color: #9A3412; }
+.badge.bg-medium   { background-color: #FEF3C7; color: #92400E; }
+.badge.bg-low      { background-color: #ECFDF5; color: #065F46; }
+
+/* Role badges */
+.badge.bg-agent        { background-color: #DBEAFE; color: #1E40AF; }
+.badge.bg-supervisor   { background-color: #FEF3C7; color: #92400E; }
+.badge.bg-senior-agent { background-color: #D1FAE5; color: #065F46; }
+
+
+/* =============================================================================
+   10. FORMS & VALIDATION
+   ============================================================================= */
+.form-container {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--box-shadow);
+    border: 1px solid var(--border-color);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-label {
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    font-size: 0.875rem;
+    color: #374151;
+}
+
+.form-control,
+.form-select {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 0.6rem 0.875rem;
+    font-size: 0.875rem;
+    color: var(--dark-text);
+    background-color: #ffffff;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #3B82F6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+    outline: none;
+}
+
+/* --- Validation States --- */
+.form-control.is-invalid,
+.form-select.is-invalid {
+    border-color: #EF4444;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23EF4444'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23EF4444' stroke='none'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+.form-control.is-valid {
+    border-color: #10B981;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%2310B981' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+.invalid-feedback {
+    display: none;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.8rem;
+    color: #EF4444;
+}
+
+.was-validated .form-control:invalid ~ .invalid-feedback,
+.form-control.is-invalid ~ .invalid-feedback {
+    display: block;
+}
+
+
+/* =============================================================================
+   11. BUTTONS & ACTION BUTTONS
+   ============================================================================= */
+
+/* --- Base Button --- */
+.btn {
+    padding: 0.6rem 1.25rem;
+    font-weight: 500;
+    font-size: 0.875rem;
+    border-radius: var(--border-radius);
+    transition: all 0.15s ease;
+    box-shadow: none;
+}
+
+/* Small button override */
+.btn-sm {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.8rem;
+    border-radius: 5px;
+    transition: all 0.15s ease;
+    margin: 0 2px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-sm i {
+    font-size: 0.875rem;
+}
+
+/* --- Colour Variants (muted, semantic) --- */
+
+/* Primary / Assign → Calm Blue */
+.btn-primary,
+.btn-assign {
+    background-color: #2563EB !important;
+    border-color: #2563EB !important;
+    color: white !important;
+}
+.btn-primary:hover,
+.btn-assign:hover {
+    background-color: #1D4ED8 !important;
+    border-color: #1D4ED8 !important;
+    transform: none;
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.2);
+}
+
+/* Info / View → Slate Blue */
+.btn-info,
+.btn-view {
+    background-color: #3B82F6 !important;
+    border-color: #3B82F6 !important;
+    color: white !important;
+}
+.btn-info:hover,
+.btn-view:hover {
+    background-color: #2563EB !important;
+    border-color: #2563EB !important;
+    transform: none;
+    box-shadow: 0 2px 6px rgba(59, 130, 246, 0.2);
+}
+
+/* Warning / Edit → Amber */
+.btn-warning,
+.btn-edit {
+    background-color: #F59E0B !important;
+    border-color: #F59E0B !important;
+    color: #ffffff !important;
+}
+.btn-warning:hover,
+.btn-edit:hover {
+    background-color: #D97706 !important;
+    border-color: #D97706 !important;
+    transform: none;
+    box-shadow: 0 2px 6px rgba(245, 158, 11, 0.2);
+}
+
+/* Success / Resolve → Green */
+.btn-success,
+.btn-resolve {
+    background-color: #10B981 !important;
+    border-color: #10B981 !important;
+    color: white !important;
+}
+.btn-success:hover,
+.btn-resolve:hover {
+    background-color: #059669 !important;
+    border-color: #059669 !important;
+    transform: none;
+    box-shadow: 0 2px 6px rgba(16, 185, 129, 0.2);
+}
+
+/* Danger / Delete → Red */
+.btn-danger,
+.btn-delete {
+    background-color: #EF4444 !important;
+    border-color: #EF4444 !important;
+    color: white !important;
+}
+.btn-danger:hover,
+.btn-delete:hover {
+    background-color: #DC2626 !important;
+    border-color: #DC2626 !important;
+    transform: none;
+    box-shadow: 0 2px 6px rgba(239, 68, 68, 0.2);
+}
+
+/* Secondary / Neutral */
+.btn-secondary {
+    background-color: #F3F4F6 !important;
+    border-color: var(--border-color) !important;
+    color: #374151 !important;
+}
+.btn-secondary:hover {
+    background-color: #E5E7EB !important;
+    border-color: #D1D5DB !important;
+    transform: none;
+}
+
+/* Button group wrapper */
+.action-buttons {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+}
+
+
+/* =============================================================================
+   12. FILTER SECTION
+   ============================================================================= */
+.filter-section {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.filter-input {
+    margin-bottom: 10px;
+}
+
+.filter-label {
+    font-weight: 500;
+    font-size: 0.8rem;
+    color: var(--muted-text);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.clear-filters {
+    cursor: pointer;
+    color: #EF4444;
+    font-size: 0.875rem;
+}
+
+.clear-filters:hover {
+    text-decoration: underline;
+}
+
+/* Quick-filter pill buttons */
+.quick-filter-btn {
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    background-color: var(--surface-bg);
+    border: 1px solid var(--border-color);
+    color: #374151;
+    font-size: 0.8rem;
+}
+
+.quick-filter-btn:hover {
+    background-color: #E5E7EB;
+}
+
+/* Results count pill */
+.result-badge {
+    background: #EFF6FF;
+    color: #2563EB;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid #BFDBFE;
+}
+
+
+/* =============================================================================
+   13. AGENT CARDS
+   ============================================================================= */
+.agent-card {
+    transition: box-shadow 0.2s ease;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: var(--box-shadow);
+    background-color: var(--card-bg);
+}
+
+.agent-card:hover {
+    transform: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.agent-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 600;
+    background-color: #DBEAFE;
+    color: #1D4ED8;
+}
+
+.agent-info,
+.agent-stats {
+    background: var(--surface-bg);
+    padding: 0.75rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+}
+
+.stats-value {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #2563EB;
+}
+
+.stats-label {
+    font-size: 0.7rem;
+    color: var(--muted-text);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+
+/* =============================================================================
+   14. MODAL
+   ============================================================================= */
+.modal-content {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    background-color: var(--surface-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1.25rem 1.5rem;
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.modal-footer {
+    border-top: 1px solid var(--border-color);
+    padding: 1rem 1.5rem;
+    background-color: var(--surface-bg);
+}
+
+
+/* =============================================================================
+   15. LOADING SPINNER
+   ============================================================================= */
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+}
+
+
+/* =============================================================================
+   16. TOAST NOTIFICATIONS
+   ============================================================================= */
+.toast {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.toast.success { border-left: 3px solid #10B981; }
+.toast.error   { border-left: 3px solid #EF4444; }
+.toast.warning { border-left: 3px solid #F59E0B; }
+
+
+/* =============================================================================
+   17. PROGRESS BARS
+   ============================================================================= */
+.progress {
+    height: 6px;
+    border-radius: 4px;
+    margin: 5px 0;
+    background-color: var(--surface-bg);
+    border: 1px solid var(--border-color);
+}
+
+.progress-bar {
+    border-radius: 4px;
+    transition: width 0.3s ease;
+    background-color: #3B82F6;
+}
+
+
+/* =============================================================================
+   18. CHART CONTAINERS
+   ============================================================================= */
+.chart-container {
+    position: relative;
+    height: 200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Force canvas to stay compact */
+canvas {
+    max-height: 180px !important;
+    width: 100% !important;
+    height: auto !important;
+}
+
+
+/* =============================================================================
+   19. ANIMATIONS
+   ============================================================================= */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0);    }
+}
+
+.fade-in {
+    animation: fadeIn 0.25s ease forwards;
+}
+
+
+/* =============================================================================
+   20. RESPONSIVE DESIGN
+   ============================================================================= */
+@media (max-width: 768px) {
+
+    /* Header */
+    .company-header h1 {
+        font-size: 1.3rem;
+    }
+
+    /* Navbar */
+    .navbar {
+        padding: 0.5rem 1rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    .navbar-nav {
+        flex-direction: column !important;
+        width: 100%;
+    }
+
+    .navbar-nav .nav-item {
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar-nav .nav-link {
+        padding: 0.75rem !important;
+    }
+
+    .navbar-nav .nav-link.create-ticket {
+        margin-left: 0;
+        margin-top: 0.5rem;
+    }
+
+    /* Dashboard Cards */
+    .dashboard-card .value {
+        font-size: 1.5rem;
+    }
+
+    .large-value {
+        font-size: 1.3rem;
+    }
+
+    /* Status Cards */
+    .status-value {
+        font-size: 1.2rem;
+    }
+
+    /* Icon circle */
+    .icon-circle {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    /* Forms */
+    .form-container {
+        padding: 1rem;
+    }
+
+    /* Tables — stack rows on small screens */
+    .table thead {
+        display: none;
+    }
+
+    .table tbody tr {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius);
+    }
+
+    .table tbody td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem;
+        border: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .table tbody td:before {
+        content: attr(data-label);
+        font-weight: 600;
+        margin-right: 1rem;
+        color: var(--muted-text);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+    }
+
+    .table tbody td:last-child {
+        border-bottom: none;
+    }
+}
